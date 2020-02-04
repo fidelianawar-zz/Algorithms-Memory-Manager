@@ -17,8 +17,7 @@ using namespace std;
 // algorithm
 void bestFit(int blockSize[], int m, int processSize[], int n)
 {
-    // Stores block id of the block allocated to a
-    // process
+
     int allocation[n];
 
     // Initially no block is assigned to any process
