@@ -27,11 +27,26 @@ public:
         cout << "Executing Point destructor" << endl;
     }
 
-    void* operator new(size_t numBytes) {
-        cout << "Allocating Point with new: " << numBytes << " bytes." << endl;
-        return malloc(numBytes);
-        //return ::new Point;
+//    void* operator new(size_t numBytes) {
+//        cout << "Allocating Point with new: " << numBytes << " bytes." << endl;
+//        return malloc(numBytes);
+//        //return ::new Point;
+//
+//    }
 
+    void * operator new(size_t size)
+    {
+        // try to allocate size bytes
+//        void* ptr = new char[size];
+//        cout << "size = " << size << ", address returned is = " << ptr << endl;
+//        return ptr;
+
+        void *storage = malloc(size);
+        if(NULL == storage) {
+            throw "allocation fail : no free memory";
+        }
+        cout << "size = " << size << ", address returned is = " << storage << endl;
+        return storage;
     }
 
     void operator delete(void* ptr) {

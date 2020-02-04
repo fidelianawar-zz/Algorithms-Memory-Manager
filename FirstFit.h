@@ -9,6 +9,7 @@
 
 class FirstFit: public Allocator{
     void* giveMemory(int size_t = 0);
+    void firstFit(int blockSize[], int m, int processSize[], int n);
 };
 
 

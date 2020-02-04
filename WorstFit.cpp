@@ -1,8 +1,8 @@
 //
-// Created by Fidelia Nawar on 1/30/20.
+// Created by Fidelia Nawar on 2/3/20.
 //
 
-#include "BestFit.h"
+#include "WorstFit.h"
 #include <iostream>
 
 using std::cout;
@@ -10,12 +10,11 @@ using std::cin;
 using std::endl;
 using namespace std;
 
-//adapated from Geeksforgeeks.com
-//https://www.geeksforgeeks.org/program-best-fit-algorithm-memory-management/
 
-// Function to allocate memory to blocks as per Best fit
+// Function to allocate memory to blocks as per worst fit
 // algorithm
-void bestFit(int blockSize[], int m, int processSize[], int n)
+void worstFit(int blockSize[], int m, int processSize[],
+              int n)
 {
     // Stores block id of the block allocated to a
     // process
@@ -29,26 +28,26 @@ void bestFit(int blockSize[], int m, int processSize[], int n)
     for (int i=0; i<n; i++)
     {
         // Find the best fit block for current process
-        int bestIdx = -1;
+        int wstIdx = -1;
         for (int j=0; j<m; j++)
         {
             if (blockSize[j] >= processSize[i])
             {
-                if (bestIdx == -1)
-                    bestIdx = j;
-                else if (blockSize[bestIdx] > blockSize[j])
-                    bestIdx = j;
+                if (wstIdx == -1)
+                    wstIdx = j;
+                else if (blockSize[wstIdx] < blockSize[j])
+                    wstIdx = j;
             }
         }
 
         // If we could find a block for current process
-        if (bestIdx != -1)
+        if (wstIdx != -1)
         {
             // allocate block j to p[i] process
-            allocation[i] = bestIdx;
+            allocation[i] = wstIdx;
 
             // Reduce available memory in this block.
-            blockSize[bestIdx] -= processSize[i];
+            blockSize[wstIdx] -= processSize[i];
         }
     }
 

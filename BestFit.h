@@ -8,7 +8,7 @@
 #include "Allocator.h"
 
 class BestFit: public Allocator {
-
+    void bestFit(int blockSize[], int m, int processSize[], int n);
 };
 
 
