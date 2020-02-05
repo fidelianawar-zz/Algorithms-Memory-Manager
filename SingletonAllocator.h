@@ -11,9 +11,9 @@ private:
 public:
 
     static Allocator* getAllocator() {
-        if(allocator == nullptr)
+        if(allocator == nullptr){
             allocator = new Allocator();
-        cout <<"I am in Allocator constructor";
+        }
         return allocator;
 
     }

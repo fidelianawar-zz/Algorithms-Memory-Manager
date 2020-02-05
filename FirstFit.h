@@ -8,6 +8,29 @@
 #include "Allocator.h"
 
 class FirstFit: public Allocator{
+
+    typedef struct
+    {
+        int num_chars;
+        char string[];
+    }
+
+    myString;
+
+    myString * alloc_my_string(char *src)
+    {
+        myString * p = NULL;
+        int numChars = strlen(src) + 1;
+
+        p = static_cast<myString *>(malloc(numChars + sizeof(myString)));
+        if (p)
+        {
+            p->num_chars = numChars;
+            strcpy(p->string, src);
+        }
+        return p;
+    }
+
     void* allocateMemory(int);
     void firstFit(int blockSize[], int m, int processSize[], int n);
 };

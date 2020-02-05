@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fstream>
 
+using std::cout;
+
 class Allocator {
 
 private:
@@ -14,9 +16,13 @@ private:
     void * mem{};
     std::string allocatorName;
 
+
 public:
 
-    Allocator();
+    Allocator() {
+        mem = malloc(256*1024*1024);
+        cout << "here";
+    };
 
     explicit Allocator(const std::string& n);
 

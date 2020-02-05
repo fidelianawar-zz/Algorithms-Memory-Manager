@@ -2,12 +2,14 @@
 #include "Point.h"
 #include "SpecialPoint.h"
 #include "SingletonAllocator.h"
+
 using std::cout;
 using std::cin;
 using std::endl;
 
 void* operator new(size_t val) {
     void* a = SingletonAllocator::getAllocator()->allocate(val);
+    cout << "here";
     cout << a << endl;
     return a;
 }
