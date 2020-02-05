@@ -12,8 +12,8 @@ env:
   ###   Note - 2: If your program requires flags, put them in front of the first 
   ###      input file
   ###      Example: INPUT_FILES: -f input01.txt input02.txt
-  INPUT_FILES: input01.txt input02.txt
-  OUTPUT_FILES: output01.txt
+  INPUT_FILES:
+  OUTPUT_FILES:
 
 jobs:
   build:

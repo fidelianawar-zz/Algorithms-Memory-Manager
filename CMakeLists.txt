@@ -11,10 +11,6 @@ set (EXE_NAME MemoryManager)
 #   set (input02 "train_target.csv")
 # etc....
 
-set (input01 "")
-set (input02 "")
-set (input03 "")
-set (input04 "")
 
 #
 ##########################################
