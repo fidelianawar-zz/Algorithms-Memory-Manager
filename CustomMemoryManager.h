@@ -5,9 +5,15 @@
 #ifndef INC_20S_3353_PA01_CUSTOMMEMORYMANAGER_H
 #define INC_20S_3353_PA01_CUSTOMMEMORYMANAGER_H
 
+#include "Allocator.h"
 
-class CustomMemoryManager {
-
+class CustomMemoryManager : public Allocator
+{
+public:
+    CustomMemoryManager( );
+    virtual ~CustomMemoryManager( );
+    virtual void* allocateMemory(size_t);
+    virtual void freeMemory(void*);
 };
 
 

@@ -12,3 +12,12 @@ using std::endl;
 using std::string;
 using std::exception;
 
+Allocator::Allocator(){
+    allocatorName = "Bob the Allocator";
+    std::cout << "Constructing Allocator Object: " << allocatorName << std::endl;
+}
+
+Allocator::Allocator(const std::string& n) {
+    allocatorName = n;
+    std::cout << "Constructing Allocator Object: " << allocatorName << std::endl;
+}

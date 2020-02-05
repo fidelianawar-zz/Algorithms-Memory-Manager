@@ -16,19 +16,12 @@ private:
 
 public:
 
-    Allocator(){
-        allocatorName = "Bob the Printer";
-        std::cout << "Constructing Printer Object: " << allocatorName << std::endl;
-    }
+    Allocator();
 
-    explicit Allocator(const std::string& n) {
-        allocatorName = n;
-        std::cout << "Constructing Printer Object: " << allocatorName << std::endl;
-    }
-    virtual void* allocateMemory(int size_t = 0) = 0;
+    explicit Allocator(const std::string& n);
 
-
-
+    virtual void* allocateMemory(int size_t = 0);
+    virtual void free(void*) = 0;
 };
 
 
