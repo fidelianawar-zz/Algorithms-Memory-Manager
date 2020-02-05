@@ -20,8 +20,15 @@ public:
 
     explicit Allocator(const std::string& n);
 
-    virtual void* allocateMemory(int size_t = 0);
-    virtual void free(void*) = 0;
+    virtual void* allocateArray(size_t);
+    virtual void* allocate(size_t);
+    virtual void* allocateWithVal(size_t val, int x);
+    virtual void deallocate(void*) noexcept;
+    virtual void deallocateArray(void*) noexcept;
+
+    //virtual void* allocateMemory(int size_t = 0) = 0;
+    //virtual void free(void*) = 0;
+
 };
 
 

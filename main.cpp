@@ -1,56 +1,34 @@
 #include <iostream>
 #include "Point.h"
 #include "SpecialPoint.h"
+#include "SingletonAllocator.h"
 using std::cout;
 using std::cin;
 using std::endl;
 
 void* operator new(size_t val) {
-    cout << "MY NEW OPERATOR.  Allocating " << val << " bytes." << endl;
-
-    void *storage = malloc(val);
-    if(NULL == storage) {
-        throw "allocation fail : no free memory";
-    }
-    cout << "size = " << val << ", address returned is = " << storage << endl;
-    return storage;
-}
-
-void* operator new[](size_t val){
-    cout << "MY NEW[] OPERATOR.  Allocating " << val << " bytes." << endl;
-    void *p;
-    p =  malloc(val);
-    if(!p)
-    {
-        throw "allocation fail : no free memory";
-    }
-    cout << "size = " << val << ", address returned is = " << p << endl;
-    return p;
+    void* a = SingletonAllocator::getAllocator()->allocate(val);
+    cout << a << endl;
+    return a;
 }
 
 void* operator new(size_t val, int x) {
-    cout << "MY NEW OPERATOR WITH VAL.  Allocating " << val << " bytes." << endl;
-
-    void *storage = malloc(val);
-    if(storage != nullptr) {
-        *static_cast<int*>(storage) = x;
-    }
-    cout << "size = " << val << ", address returned is = " << storage << endl;
-    return storage;
+    void* a = SingletonAllocator::getAllocator()->allocateWithVal(val, x);
+    cout << a << endl;
+    return a;
 }
 
+void* operator new[](size_t val){
+    void* a = SingletonAllocator::getAllocator()->allocateArray(val);
+    cout << a << endl;
+    return a;
+}
 
 void operator delete(void* ptr) noexcept {
-    cout << "MY DELETE OPERATOR. Deallocating..." << endl;
-    if(ptr){
-        free(ptr);
-    }
+    SingletonAllocator::getAllocator()->deallocate(ptr);
 }
 void operator delete[](void* ptr) noexcept {
-    cout << "MY DELETE[] OPERATOR. Deallocating..." << endl;
-    if(ptr){
-        free(ptr);
-    }
+    SingletonAllocator::getAllocator()->deallocate(ptr);
 }
 
 int main() {
@@ -58,9 +36,9 @@ int main() {
     int* ptr01 = new int;
     delete ptr01;
 
-    cout << endl << "Global new[]" << endl;
-    int* ptrArray = new int[5];
-    delete ptrArray;
+//    cout << endl << "Global new[]" << endl;
+//    int* ptrArray = new int[5];
+//    delete ptrArray;
 
 //    cout << endl << "Specialized new." << endl;
 //    Point* p = new Point(2, 3, 4);

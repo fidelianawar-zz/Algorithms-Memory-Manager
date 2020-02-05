@@ -12,9 +12,10 @@ public:
 
     static Allocator* getAllocator() {
         if(allocator == nullptr)
-            allocator = new Allocator("NotBob");
-
+            allocator = new Allocator();
+        cout <<"I am in Allocator constructor";
         return allocator;
+
     }
 };
 
