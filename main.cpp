@@ -1,11 +1,44 @@
 #include <iostream>
-#include "OverloadOps.h"
 #include "Point.h"
 #include "SpecialPoint.h"
 using std::cout;
 using std::cin;
 using std::endl;
 
+void* operator new(size_t val) {
+    cout << "Global new operator.  Allocating " << val << " bytes." << endl;
+//    return malloc(val);
+    void *storage = malloc(val);
+    if(NULL == storage) {
+        throw "allocation fail : no free memory";
+    }
+    cout << "size = " << val << ", address returned is = " << storage << endl;
+    return storage;
+}
+
+void* operator new[](size_t val){
+    cout << "Global new[] operator.  Allocating " << val << " bytes." << endl;
+    void *p;
+    p =  malloc(val);
+    if(!p)
+    {
+        throw "allocation fail : no free memory";
+    }
+    return p;
+}
+
+void operator delete(void* ptr, size_t val) noexcept {
+    cout << "Global delete operator. Deallocating..." << endl;
+    if(ptr){
+        free(ptr);
+    }
+}
+void operator delete[](void* ptr, size_t val) noexcept {
+    cout << "Global delete[] operator. Deallocating..." << endl;
+    if(ptr){
+        free(ptr);
+    }
+}
 
 int main() {
     cout << "Global new." << endl;

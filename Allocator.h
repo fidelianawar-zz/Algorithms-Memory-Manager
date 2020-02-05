@@ -4,30 +4,29 @@
 
 #ifndef INC_20S_3353_PA01_ALLOCATOR_H
 #define INC_20S_3353_PA01_ALLOCATOR_H
-
-#include "Singleton.h"
-using std::cout;
-using std::endl;
-using std::string;
+#include <iostream>
+#include <fstream>
 
 class Allocator {
 
 private:
 
     void * mem{};
-    string allocatorName;
-
+    std::string allocatorName;
 
 public:
 
-    explicit Allocator(const std::string& n);
+    Allocator(){
+        allocatorName = "Bob the Printer";
+        std::cout << "Constructing Printer Object: " << allocatorName << std::endl;
+    }
 
-    virtual void* giveMemory(int size_t = 0) = 0;
+    explicit Allocator(const std::string& n) {
+        allocatorName = n;
+        std::cout << "Constructing Printer Object: " << allocatorName << std::endl;
+    }
+    virtual void* allocateMemory(int size_t = 0) = 0;
 
-    void* operator new(size_t val);
-    void* operator new[](size_t val);
-    void operator delete(void* ptr, size_t) noexcept;
-    void operator delete[](void* ptr,  size_t) noexcept;
 
 
 };

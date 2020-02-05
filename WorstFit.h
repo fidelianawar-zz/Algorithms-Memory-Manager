@@ -9,6 +9,7 @@
 
 class WorstFit: public Allocator {
     void worstFit(int blockSize[], int m, int processSize[], int n);
+    void* allocateMemory(int);
 };
 
 

@@ -2,11 +2,11 @@
 #include <string>
 #include "Allocator.h"
 
-class Singleton {
+class SingletonAllocator {
 private:
 
     static Allocator* allocator;
-    Singleton() = default;
+    SingletonAllocator() = default;
 
 public:
 
@@ -14,8 +14,8 @@ public:
         if(allocator == nullptr)
             allocator = new Allocator("NotBob");
 
-        return theManager;
+        return allocator;
     }
 };
 
-Allocator* Singleton::allocator = nullptr;
+Allocator* SingletonAllocator::allocator = nullptr;
