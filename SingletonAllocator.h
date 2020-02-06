@@ -12,7 +12,10 @@ public:
 
     static Allocator* getAllocator() {
         if(allocator == nullptr){
-            allocator = new Allocator();
+
+            void* p = malloc(sizeof(Allocator));
+            Allocator * a = new (p) Allocator();
+            allocator = a;
         }
         return allocator;
 

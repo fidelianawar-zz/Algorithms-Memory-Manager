@@ -21,7 +21,6 @@ public:
 
     Allocator() {
         mem = malloc(256*1024*1024);
-        cout << "here";
     };
 
     explicit Allocator(const std::string& n);
