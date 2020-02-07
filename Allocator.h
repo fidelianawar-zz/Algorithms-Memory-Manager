@@ -6,10 +6,15 @@
 #define INC_20S_3353_PA01_ALLOCATOR_H
 #include <iostream>
 #include <fstream>
+#include <list>
 
 using std::cout;
 
 class Allocator {
+    struct Box{
+        void* address;
+        int bytesValue;
+    };
 
 private:
 
@@ -19,10 +24,8 @@ private:
 
 public:
 
-    Allocator() {
-        mem = malloc(256*1024*1024);
-    };
-
+    Allocator();
+    ~Allocator();
     explicit Allocator(const std::string& n);
 
     virtual void* allocateArray(size_t);
@@ -31,7 +34,10 @@ public:
     virtual void deallocate(void*) noexcept;
     virtual void deallocateArray(void*) noexcept;
 
-    //virtual void* allocateMemory(int size_t = 0) = 0;
+    void  wordBoundary();
+    void* getAddress();
+
+    //virtual void* allocateMemory(int size_t = 0);
     //virtual void free(void*) = 0;
 
 };

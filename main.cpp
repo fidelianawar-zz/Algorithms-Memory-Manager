@@ -2,6 +2,7 @@
 #include "Point.h"
 #include "SpecialPoint.h"
 #include "SingletonAllocator.h"
+#include "FirstFit.h"
 
 using std::cout;
 using std::cin;
@@ -9,8 +10,8 @@ using std::endl;
 
 void* operator new(size_t val) {
     void* a = SingletonAllocator::getAllocator()->allocate(val);
-    cout << "here";
-    cout << a << endl;
+    cout << "here in my overloaded new operator ";
+    cout << "start address is: " << a << endl;
     return a;
 }
 
@@ -22,7 +23,8 @@ void* operator new(size_t val, int x) {
 
 void* operator new[](size_t val){
     void* a = SingletonAllocator::getAllocator()->allocateArray(val);
-    cout << a << endl;
+    cout << "here in my overloaded new[] operator ";
+    cout << "address is: " << a << endl;
     return a;
 }
 
@@ -30,17 +32,34 @@ void operator delete(void* ptr) noexcept {
     SingletonAllocator::getAllocator()->deallocate(ptr);
 }
 void operator delete[](void* ptr) noexcept {
-    SingletonAllocator::getAllocator()->deallocate(ptr);
+    SingletonAllocator::getAllocator()->deallocateArray(ptr);
 }
 
 int main() {
-    cout << "Global new." << endl;
-    int* ptr01 = new int;
-    delete ptr01;
+//    int* ptr01 = new int;
+//    delete ptr01;
 
-//    cout << endl << "Global new[]" << endl;
-//    int* ptrArray = new int[5];
-//    delete ptrArray;
+    cout << endl;
+
+    int* ptrArray = new int[5];
+    delete[] ptrArray;
+
+    cout << endl << endl;
+
+    //mergeEmpty()
+    //FirstFit fit;
+
+    //create array to store block sizes
+    int block_size[] = {300, 50, 200, 350, 70};
+    //create array to store process sizes
+    int process_size[] = {200, 47, 212, 426, 10};
+    //variable total_blocks that contain total number of blocks
+    int total_blocks = sizeof(block_size) / sizeof(block_size[0]);
+    //variable total_process that contain total number of blocks
+    int total_process = sizeof(process_size) / sizeof(process_size[0]);
+    //calling the function First_fit
+    FirstFit(block_size, total_blocks, process_size, total_process);
+    return 0 ;
 
 //    cout << endl << "Specialized new." << endl;
 //    Point* p = new Point(2, 3, 4);

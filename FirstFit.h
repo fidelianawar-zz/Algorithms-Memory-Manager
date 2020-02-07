@@ -8,7 +8,7 @@
 #include "Allocator.h"
 
 class FirstFit: public Allocator{
-
+public:
     typedef struct
     {
         int num_chars;
@@ -30,6 +30,8 @@ class FirstFit: public Allocator{
         }
         return p;
     }
+
+    FirstFit(int*, int, int*, int);
 
     void* allocateMemory(int);
     void firstFit(int blockSize[], int m, int processSize[], int n);
