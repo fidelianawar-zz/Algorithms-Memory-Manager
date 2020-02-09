@@ -10,33 +10,37 @@ using std::cin;
 using std::endl;
 using namespace std;
 
-FirstFit::FirstFit(int block_size[], int total_blocks, int process_size[], int total_process) {
-    int allocation[total_process];
-    memset(allocation, -1, sizeof(allocation));
-    //this for loop wll pick eact process and allocate a first fit block to it
-    for (int i = 0; i < total_process; i++) {
-        for (int j = 0; j < total_blocks; j++) {
-            if (block_size[j] >= process_size[i]) {
-                allocation[i] = j;
-                block_size[j] -= process_size[i];
-                break;
-            }
-        }
-    }
-    cout << "\nProcess No.\tProcess Size\tBlock no.\n";
-    for (int i = 0; i < total_process; i++) {
-        cout << " " << i+1 << "\t\t" << process_size[i] << "\t\t";
-        if (allocation[i] != -1)
-            cout << allocation[i] + 1;
-        else
-            cout << "Not Allocated";
-        cout << endl;
-    }
+void* allocateMemory(void* startingAddress,int sizeOfBlock,void* nextAddressStart,void* nextAddressEnd){
+    cout  << "Inside FirstFit.h allocateMemory" << endl;
+    void* a;
+    return a;
 }
 
-void* allocateMemory(int x){
 
-}
+//FirstFit::FirstFit(int block_size[], int total_blocks, int process_size[], int total_process) {
+//    int allocation[total_process];
+//    memset(allocation, -1, sizeof(allocation));
+//    //this for loop wll pick eact process and allocate a first fit block to it
+//    for (int i = 0; i < total_process; i++) {
+//        for (int j = 0; j < total_blocks; j++) {
+//            if (block_size[j] >= process_size[i]) {
+//                allocation[i] = j;
+//                block_size[j] -= process_size[i];
+//                break;
+//            }
+//        }
+//    }
+//    cout << "\nProcess No.\tProcess Size\tBlock no.\n";
+//    for (int i = 0; i < total_process; i++) {
+//        cout << " " << i+1 << "\t\t" << process_size[i] << "\t\t";
+//        if (allocation[i] != -1)
+//            cout << allocation[i] + 1;
+//        else
+//            cout << "Not Allocated";
+//        cout << endl;
+//    }
+//}
+
 
 
 

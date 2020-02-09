@@ -14,7 +14,7 @@ using std::exception;
 
 Allocator::Allocator() {
     mem = malloc(256*1024*1024);
-    cout << "Allocating at address " << mem << std::endl;
+    cout << "Inside Allocator constructor at address " << mem << std::endl;
 };
 
 Allocator::Allocator(const std::string& n) {
@@ -51,7 +51,6 @@ void* Allocator::allocateWithVal(size_t val, int x){
 }
 
 void* Allocator::allocateArray(size_t val){
-
     cout << "NEW[]. Allocating " << val << " bytes." << endl;
     void *storage = mem;
     if(NULL == storage) {
@@ -76,10 +75,17 @@ void Allocator::deallocateArray(void* ptr) noexcept{
     }
 }
 
-void * Allocator::getAddress() {
-    return mem;
-}
+//void * Allocator::getAddress() {
+//    return mem;
+//}
+//
+//void Allocator::wordBoundary() {
+//    //cout << getAddress() % 8 << endl;
+//}
 
-void Allocator::wordBoundary() {
-    //cout << getAddress() % 8 << endl;
+void* Allocator::allocateMemory(void* startingAddress,int sizeOfBlock,void* nextAddressStart,void* nextAddressEnd){
+    cout << "In Allocator.h allocateMemory" << endl;
+
+    void* a;
+    return a;
 }

@@ -3,10 +3,14 @@
 #include "SpecialPoint.h"
 #include "SingletonAllocator.h"
 #include "FirstFit.h"
+#include "GlobalFlag.h"
 
 using std::cout;
 using std::cin;
 using std::endl;
+using std::string;
+
+char flag = 'F';
 
 void* operator new(size_t val) {
     void* a = SingletonAllocator::getAllocator()->allocate(val);
@@ -21,8 +25,8 @@ void* operator new(size_t val, int x) {
     return a;
 }
 
-void* operator new[](size_t val){
-    void* a = SingletonAllocator::getAllocator()->allocateArray(val);
+void* operator new[](size_t x){
+    void* a = SingletonAllocator::getAllocator()->allocateArray(x);
     cout << "here in my overloaded new[] operator ";
     cout << "address is: " << a << endl;
     return a;
@@ -44,22 +48,51 @@ int main() {
     int* ptrArray = new int[5];
     delete[] ptrArray;
 
-    cout << endl << endl;
+    cout << endl << "end" << endl;
 
     //mergeEmpty()
-    //FirstFit fit;
+
 
     //create array to store block sizes
     int block_size[] = {300, 50, 200, 350, 70};
+
     //create array to store process sizes
     int process_size[] = {200, 47, 212, 426, 10};
+
     //variable total_blocks that contain total number of blocks
     int total_blocks = sizeof(block_size) / sizeof(block_size[0]);
+
     //variable total_process that contain total number of blocks
     int total_process = sizeof(process_size) / sizeof(process_size[0]);
+
     //calling the function First_fit
-    FirstFit(block_size, total_blocks, process_size, total_process);
+    //FirstFit(block_size, total_blocks, process_size, total_process);
+
+    flag = 'F';
+    FirstFit fit;
+
+
+    fit.allocateMemory(ptrArray, 2, ptrArray+4, ptrArray+8);
+
     return 0 ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    cout << endl << "Specialized new." << endl;
 //    Point* p = new Point(2, 3, 4);
@@ -74,5 +107,5 @@ int main() {
 //    SpecialPoint* sp = new SpecialPoint(1, 2, 3, red);
 //    delete sp;
 
-    return 0;
-}
+//    return 0;
+

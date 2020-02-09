@@ -34,10 +34,10 @@ public:
     virtual void deallocate(void*) noexcept;
     virtual void deallocateArray(void*) noexcept;
 
-    void  wordBoundary();
-    void* getAddress();
+//    void  wordBoundary();
+//    void* getAddress();
 
-    //virtual void* allocateMemory(int size_t = 0);
+    virtual void* allocateMemory(void*, int, void*, void*);
     //virtual void free(void*) = 0;
 
 };

@@ -21,4 +21,4 @@ foreach(file IN LISTS input01 input02 input03 input04)
 endforeach()
 
 set(CMAKE_CXX_STANDARD 14)
-add_executable(${EXE_NAME} main.cpp Allocator.cpp Allocator.h BestFit.cpp BestFit.h CustomMemoryManager.cpp CustomMemoryManager.h FirstFit.cpp FirstFit.h main.cpp Point.h SingletonAllocator.h SpecialPoint.h WorstFit.cpp WorstFit.h)
+add_executable(${EXE_NAME} main.cpp Allocator.cpp Allocator.h BestFit.cpp BestFit.h CustomMemoryManager.cpp CustomMemoryManager.h FirstFit.cpp FirstFit.h main.cpp Point.h SingletonAllocator.h SpecialPoint.h WorstFit.cpp WorstFit.h GlobalFlag.h)
