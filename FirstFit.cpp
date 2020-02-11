@@ -10,11 +10,29 @@ using std::cin;
 using std::endl;
 using namespace std;
 
+FirstFit::FirstFit():Allocator(){
+    cout << "inside FirstFit constructor" << endl;
+}
+
 void* allocateMemory(void* startingAddress,int sizeOfBlock,void* nextAddressStart,void* nextAddressEnd){
-    cout  << "Inside FirstFit.h allocateMemory" << endl;
+    cout  << "INSIDE FIRSTFIT.CPP allocateMemory" << endl;
     void* a;
     return a;
 }
+
+//FirstFit::FirstFit():Allocator(){
+//    //mem = malloc(256*1024*1024);
+//    cout << "Inside FirstFit constructor at address " << mem << std::endl;
+//}
+
+
+
+
+
+
+
+
+
 
 
 //FirstFit::FirstFit(int block_size[], int total_blocks, int process_size[], int total_process) {

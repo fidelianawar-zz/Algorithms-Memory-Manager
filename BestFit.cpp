@@ -10,6 +10,15 @@ using std::cin;
 using std::endl;
 using namespace std;
 
+BestFit::BestFit():Allocator(){
+    cout << "inside BestFit constructor";
+}
+
+//BestFit::BestFit():Allocator(){
+//    //mem = malloc(256*1024*1024);
+//   // cout << "Inside FirstFit constructor at address " << mem << std::endl;
+//}
+
 //adapated from Geeksforgeeks.com
 //https://www.geeksforgeeks.org/program-best-fit-algorithm-memory-management/
 

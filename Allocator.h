@@ -4,25 +4,40 @@
 
 #ifndef INC_20S_3353_PA01_ALLOCATOR_H
 #define INC_20S_3353_PA01_ALLOCATOR_H
+
 #include <iostream>
 #include <fstream>
 #include <list>
+#include <vector>
+#include <bitset>
 
 using std::cout;
 
 class Allocator {
-    struct Box{
-        void* address;
-        int bytesValue;
+
+    size_t size = 256 * 1024 * 1024;
+protected:
+    struct storedValues{
+        void* memAddress;
+        size_t vectorSize;
     };
 
-private:
+    struct freeBlock{
+        void* startAddress;
+        size_t size;
+        freeBlock* next;
+    };
+
+    freeBlock* freeList;
+    //std::vector <int, Allocator> storedVector;
+    std::vector<storedValues> storedVector;
 
     void * mem{};
     std::string allocatorName;
 
-
 public:
+
+
 
     Allocator();
     ~Allocator();
@@ -34,13 +49,12 @@ public:
     virtual void deallocate(void*) noexcept;
     virtual void deallocateArray(void*) noexcept;
 
-//    void  wordBoundary();
-//    void* getAddress();
-
-    virtual void* allocateMemory(void*, int, void*, void*);
+    virtual void* allocateMemory(void*, int, void*, void*) = 0;
     //virtual void free(void*) = 0;
 
 };
 
+//Allocator::freeBlock* freeList;
+//Allocator::storedValues storedVector;
 
 #endif //INC_20S_3353_PA01_ALLOCATOR_H

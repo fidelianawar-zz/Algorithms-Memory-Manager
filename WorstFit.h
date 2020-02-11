@@ -9,7 +9,9 @@
 
 class WorstFit: public Allocator {
     void worstFit(int blockSize[], int m, int processSize[], int n);
-    void* allocateMemory(int);
+    void* allocateMemory(void*, int, void*, void*){
+        cout << std::endl << "INSIDE WORSTFIT.H allocateMemory" << std::endl;
+    }
 };
 
 

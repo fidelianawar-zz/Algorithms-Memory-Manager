@@ -3,9 +3,6 @@
 //
 #include <iostream>
 #include "Allocator.h"
-#include "BestFit.h"
-#include "WorstFit.h"
-#include "FirstFit.h"
 
 using std::cout;
 using std::endl;
@@ -13,7 +10,13 @@ using std::string;
 using std::exception;
 
 Allocator::Allocator() {
+
     mem = malloc(256*1024*1024);
+
+    freeList->size = size;
+    freeList->next = nullptr;
+
+
     cout << "Inside Allocator constructor at address " << mem << std::endl;
 };
 
@@ -25,6 +28,10 @@ Allocator::Allocator(const std::string& n) {
 
 Allocator::~Allocator(){
     free(mem);
+    freeList->next = nullptr;
+    freeList->size = 0;
+    //storedVector.memAddress = 0;
+    //storedVector->size = 0;
 }
 
 void* Allocator::allocate(size_t val) {
@@ -75,17 +82,8 @@ void Allocator::deallocateArray(void* ptr) noexcept{
     }
 }
 
-//void * Allocator::getAddress() {
-//    return mem;
-//}
-//
-//void Allocator::wordBoundary() {
-//    //cout << getAddress() % 8 << endl;
-//}
-
 void* Allocator::allocateMemory(void* startingAddress,int sizeOfBlock,void* nextAddressStart,void* nextAddressEnd){
-    cout << "In Allocator.h allocateMemory" << endl;
-
+    cout << "In ALLOCATOR.H allocateMemory" << endl;
     void* a;
     return a;
 }

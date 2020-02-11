@@ -10,10 +10,10 @@
 class CustomMemoryManager : public Allocator
 {
 public:
-    CustomMemoryManager( );
-    virtual ~CustomMemoryManager( );
-    virtual void* allocateMemory(size_t);
-    virtual void freeMemory(void*);
+//    CustomMemoryManager( );
+//    virtual ~CustomMemoryManager( );
+//    virtual void* allocateMemory(size_t);
+//    virtual void freeMemory(void*);
 };
 
 

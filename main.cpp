@@ -2,7 +2,6 @@
 #include "Point.h"
 #include "SpecialPoint.h"
 #include "SingletonAllocator.h"
-#include "FirstFit.h"
 #include "GlobalFlag.h"
 
 using std::cout;
@@ -13,10 +12,21 @@ using std::string;
 char flag = 'F';
 
 void* operator new(size_t val) {
-    void* a = SingletonAllocator::getAllocator()->allocate(val);
-    cout << "here in my overloaded new operator ";
-    cout << "start address is: " << a << endl;
-    return a;
+
+    int x = val % 8;
+
+    if(x == 0){
+        void* a = SingletonAllocator::getAllocator()->allocate(val);
+        cout << "here in my overloaded new operator ";
+        cout << "start address is: " << a << endl;
+        return a;
+    }
+
+    else{
+        val = 8 - x;
+        void* a = SingletonAllocator::getAllocator()->allocate(val);
+        return a;
+    }
 }
 
 void* operator new(size_t val, int x) {
@@ -25,11 +35,20 @@ void* operator new(size_t val, int x) {
     return a;
 }
 
-void* operator new[](size_t x){
-    void* a = SingletonAllocator::getAllocator()->allocateArray(x);
-    cout << "here in my overloaded new[] operator ";
-    cout << "address is: " << a << endl;
-    return a;
+void* operator new[](size_t val){
+    int x = val % 8;
+
+    if(x == 0){
+        void* a = SingletonAllocator::getAllocator()->allocate(val);
+        cout << "here in my overloaded new operator ";
+        cout << "start address is: " << a << endl;
+        return a;
+    }
+    else{
+        val = 8 - x;
+        void* a = SingletonAllocator::getAllocator()->allocate(val);
+        return a;
+    }
 }
 
 void operator delete(void* ptr) noexcept {
@@ -68,11 +87,6 @@ int main() {
     //calling the function First_fit
     //FirstFit(block_size, total_blocks, process_size, total_process);
 
-    flag = 'F';
-    FirstFit fit;
-
-
-    fit.allocateMemory(ptrArray, 2, ptrArray+4, ptrArray+8);
 
     return 0 ;
 }

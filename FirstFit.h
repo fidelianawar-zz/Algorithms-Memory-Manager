@@ -13,7 +13,20 @@
 class FirstFit: public Allocator{
 public:
 
+    void * mem{};
     void* checkMemory(void*& startingAddrress,int sizeOfBlock,void*& nextAddressStart,void*& nextAddressEnd);
+
+    FirstFit();
+
+    void* allocateMemory(void*, int, void*, void*){
+
+        cout  << std::endl << "INSIDE FIRSTFIT.H allocateMemory" << std::endl << std::endl;
+        void* a;
+        return a;
+    };
+
+    void firstFit(int blockSize[], int m, int processSize[], int n);
+};
 
 
 //    Vehicle<int> vehicle(int,double,string,vehicle_type);
@@ -43,9 +56,7 @@ public:
 
     //FirstFit(int*, int, int*, int);
 
-    void* allocateMemory(void*, int, void*, void*) {};
-    void firstFit(int blockSize[], int m, int processSize[], int n);
-};
+
 
 
 #endif //INC_20S_3353_PA01_FIRSTFIT_H
