@@ -14,12 +14,6 @@ FirstFit::FirstFit():Allocator(){
     cout << "inside FirstFit constructor" << endl;
 }
 
-void* allocateMemory(void* startingAddress,int sizeOfBlock,void* nextAddressStart,void* nextAddressEnd){
-    cout  << "INSIDE FIRSTFIT.CPP allocateMemory" << endl;
-    void* a;
-    return a;
-}
-
 //FirstFit::FirstFit():Allocator(){
 //    //mem = malloc(256*1024*1024);
 //    cout << "Inside FirstFit constructor at address " << mem << std::endl;

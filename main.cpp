@@ -16,7 +16,7 @@ void* operator new(size_t val) {
     int x = val % 8;
 
     if(x == 0){
-        void* a = SingletonAllocator::getAllocator()->allocate(val);
+        void* a = SingletonAllocator::getAllocator()->allocateMemory(val);
         cout << "here in my overloaded new operator ";
         cout << "start address is: " << a << endl;
         return a;
@@ -24,8 +24,7 @@ void* operator new(size_t val) {
 
     else{
         val = 8 - x;
-        void* a = SingletonAllocator::getAllocator()->allocate(val);
-        return a;
+        return SingletonAllocator::getAllocator()->allocateMemory(val);
     }
 }
 
@@ -39,14 +38,14 @@ void* operator new[](size_t val){
     int x = val % 8;
 
     if(x == 0){
-        void* a = SingletonAllocator::getAllocator()->allocate(val);
+        void* a = SingletonAllocator::getAllocator()->allocateMemory(val);
         cout << "here in my overloaded new operator ";
         cout << "start address is: " << a << endl;
         return a;
     }
     else{
         val = 8 - x;
-        void* a = SingletonAllocator::getAllocator()->allocate(val);
+        void* a = SingletonAllocator::getAllocator()->allocateMemory(val);
         return a;
     }
 }
@@ -55,7 +54,7 @@ void operator delete(void* ptr) noexcept {
     SingletonAllocator::getAllocator()->deallocate(ptr);
 }
 void operator delete[](void* ptr) noexcept {
-    SingletonAllocator::getAllocator()->deallocateArray(ptr);
+    SingletonAllocator::getAllocator()->deallocate(ptr);
 }
 
 int main() {

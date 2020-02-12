@@ -8,9 +8,22 @@
 #include "Allocator.h"
 
 class WorstFit: public Allocator {
+public:
+
+    WorstFit();
+
     void worstFit(int blockSize[], int m, int processSize[], int n);
-    void* allocateMemory(void*, int, void*, void*){
-        cout << std::endl << "INSIDE WORSTFIT.H allocateMemory" << std::endl;
+
+    void* allocateMemory(size_t val){
+        cout  << std::endl << "INSIDE WORSTFIT.H allocateMemory" << std::endl;
+        void* a;
+        return a;
+    }
+    void deallocate(void* pointer){
+        if(pointer){
+            pointer = nullptr;
+            free(pointer);
+        }
     }
 };
 

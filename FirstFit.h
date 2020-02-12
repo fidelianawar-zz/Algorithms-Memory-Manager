@@ -9,6 +9,7 @@
 #include <iostream>
 #include <list>
 #include <iterator>
+#include <vector>
 
 class FirstFit: public Allocator{
 public:
@@ -18,14 +19,40 @@ public:
 
     FirstFit();
 
-    void* allocateMemory(void*, int, void*, void*){
+    void* allocateMemory(size_t val) {
 
         cout  << std::endl << "INSIDE FIRSTFIT.H allocateMemory" << std::endl << std::endl;
-        void* a;
+        void *a;
         return a;
-    };
+    }
+
+
+    void deallocate(void* pointer){
+        if(pointer){
+            pointer = nullptr;
+            free(pointer);
+        }
+    }
+
+
+//        void* startingAddress = aStart;
+//        int pushSize = allocateSize % 8;
+//        if(pushSize != 0){
+//            allocateSize = (allocateSize / 8) + 1;
+//        }
+//
+//        allocateSize = allocateSize / 8;
+
+//        if(startingAddress == mem){
+//            //Allocator::offsetSpace->push_back(0,allocateSize);
+//        }
+//
+//        cout << "the start address is: " << startingAddress << std::endl;
+
 
     void firstFit(int blockSize[], int m, int processSize[], int n);
+
+
 };
 
 

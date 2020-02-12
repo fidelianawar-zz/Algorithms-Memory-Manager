@@ -10,6 +10,9 @@ using std::cin;
 using std::endl;
 using namespace std;
 
+WorstFit::WorstFit(){
+    cout << std::endl << "INSIDE WORST FIT CONSTRUCTOR" << std::endl;
+}
 
 // Function to allocate memory to blocks as per worst fit
 // algorithm
