@@ -13,11 +13,13 @@ public:
     BestFit();
 
     void bestFit(int blockSize[], int m, int processSize[], int n);
+
     void* allocateMemory(size_t val){
         cout  << std::endl << "INSIDE BESTFIT.H allocateMemory" << std::endl;
         void* a;
         return a;
-    };
+    }
+
     void deallocate(void* pointer){
         if(pointer){
             pointer = nullptr;

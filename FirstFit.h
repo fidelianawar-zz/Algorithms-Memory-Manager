@@ -20,10 +20,9 @@ public:
     FirstFit();
 
     void* allocateMemory(size_t val) {
-
-        cout  << std::endl << "INSIDE FIRSTFIT.H allocateMemory" << std::endl << std::endl;
-        void *a;
-        return a;
+        int* x = new int[5];
+        cout << "inside FirstFit Allocate Memory. x is at: " << x;
+        return x;
     }
 
 

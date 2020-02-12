@@ -28,7 +28,7 @@ protected:
 
     std::string allocatorName;
 
-    bitset<256*1024*1024/8> memoryBitSetVector;
+    bitset<256*1024*1024> memoryBitSetVector;
 
     vector<int, int>* offsetSpace;
 

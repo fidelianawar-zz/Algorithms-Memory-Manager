@@ -3,11 +3,13 @@
 #include "SpecialPoint.h"
 #include "SingletonAllocator.h"
 #include "GlobalFlag.h"
+#include "Allocator.h"
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
+using std::bitset;
 
 char flag = 'F';
 
@@ -60,13 +62,13 @@ void operator delete[](void* ptr) noexcept {
 int main() {
 //    int* ptr01 = new int;
 //    delete ptr01;
-
-    cout << endl;
-
-    int* ptrArray = new int[5];
-    delete[] ptrArray;
-
-    cout << endl << "end" << endl;
+//
+//    cout << endl;
+//
+//    int* ptrArray = new int[5];
+//    delete[] ptrArray;
+//
+//    cout << endl << "end" << endl;
 
     //mergeEmpty()
 

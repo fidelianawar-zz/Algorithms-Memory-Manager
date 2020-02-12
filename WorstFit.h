@@ -19,13 +19,14 @@ public:
         void* a;
         return a;
     }
+
     void deallocate(void* pointer){
         if(pointer){
             pointer = nullptr;
             free(pointer);
         }
     }
-};
 
+};
 
 #endif //INC_20S_3353_PA01_WORSTFIT_H
