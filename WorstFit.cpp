@@ -16,7 +16,6 @@ WorstFit::WorstFit(){
 
 void* WorstFit::allocateMemory(size_t val) {
 
-    bitset<256*1024*1024/8> freeMem;
     vector<pair <int, int>, myAllocator<std::pair<int, int>>> babyBook;
     pair<int,int> bestSize;
 

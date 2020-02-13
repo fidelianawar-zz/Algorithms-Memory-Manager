@@ -27,25 +27,14 @@ protected:
     void * mem;
     size_t size = 256 * 1024 * 1024;
 
+    bitset<256*1024*1024/8> freeMem;
+    vector<std::pair<int,int>, myAllocator<pair<int,int>>> bookKeeper;
+
     std::string allocatorName;
 
 public:
-
-//    struct MemBlock{
-//        void* currStartAddy;
-//        void* nextStartAddy;
-//        void* prevStartAddy;
-//        int blockSize;
-//        bool free;
-//    };
-
-    bitset<256*1024*1024> memoryBitSetVector;
-
-    vector<pair<int,int>, myAllocator<pair<int,int>>> bookKeeper;
-
     Allocator() {
         mem = malloc(256*1024*1024);
-       //tracker.blockSize
         cout << "Inside Allocator constructor at address " << mem << std::endl;
     };
 

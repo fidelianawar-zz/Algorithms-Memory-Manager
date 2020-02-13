@@ -1,5 +1,5 @@
 //
-// Created by Fidelia Nawar on 1/30/20.
+// Created by fidelia Nawar on 1/30/20.
 //
 
 #include "FirstFit.h"
@@ -17,7 +17,7 @@ FirstFit::FirstFit():Allocator(){
 void* FirstFit::allocateMemory(size_t val) {
 
     //vector<pair<int,size_t>> bookList;
-    bitset<256*1024*1024/8> freeMem;
+
 
     int offset;
 
@@ -28,6 +28,7 @@ void* FirstFit::allocateMemory(size_t val) {
     cout << "inside FirstFit Allocate Memory. val is : " << val << endl;
     cout << "size of freeMem is: " << freeMem.size() << endl;
 
+    //if(freeMem.size() )
     for (int i = 0; i < freeMem.size(); i++) {
         //empty block
         if (freeMem[i] == 0) {
