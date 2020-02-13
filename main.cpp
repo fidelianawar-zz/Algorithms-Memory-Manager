@@ -1,9 +1,7 @@
 #include <iostream>
-#include "Point.h"
-#include "SpecialPoint.h"
 #include "SingletonAllocator.h"
-#include "GlobalFlag.h"
 #include "Allocator.h"
+#include "myAllocator.h"
 
 using std::cout;
 using std::cin;
@@ -25,7 +23,7 @@ void* operator new(size_t val) {
     }
 
     else{
-        val = 8 - x;
+        val = val - (val%8)+8;
         return SingletonAllocator::getAllocator()->allocateMemory(val);
     }
 }
@@ -46,7 +44,7 @@ void* operator new[](size_t val){
         return a;
     }
     else{
-        val = 8 - x;
+        val = val - (val%8)+8;
         void* a = SingletonAllocator::getAllocator()->allocateMemory(val);
         return a;
     }
@@ -65,10 +63,10 @@ int main() {
 //
 //    cout << endl;
 //
-//    int* ptrArray = new int[5];
-//    delete[] ptrArray;
-//
-//    cout << endl << "end" << endl;
+    int* ptrArray = new int[5];
+    delete[] ptrArray;
+
+    cout << endl << "end" << endl;
 
     //mergeEmpty()
 

@@ -6,32 +6,66 @@
 #define INC_20S_3353_PA01_FIRSTFIT_H
 
 #include "Allocator.h"
+#include "myAllocator.h"
 #include <iostream>
 #include <list>
 #include <iterator>
 #include <vector>
+#include <string>
+#include <bitset>
 
-class FirstFit: public Allocator{
+class FirstFit: public Allocator {
 public:
-
-    void * mem{};
-    void* checkMemory(void*& startingAddrress,int sizeOfBlock,void*& nextAddressStart,void*& nextAddressEnd);
 
     FirstFit();
 
-    void* allocateMemory(size_t val) {
-        int* x = new int[5];
-        cout << "inside FirstFit Allocate Memory. x is at: " << x;
-        return x;
-    }
+    void *allocateMemory(size_t val);
+    void deallocate(void *pointer);
 
-
-    void deallocate(void* pointer){
-        if(pointer){
-            pointer = nullptr;
-            free(pointer);
+};
+    /*
+        if ((val + OFFset) > freeMem.size()) {
+            cout << "out of bounds";
         }
+
+        int counter = 0;
+
+        while (counter != val) {
+            if (freeMem[track] == 0) {
+                track++;
+                counter++;
+            }
+            else {
+                while (freeMem[track] == 1) {
+                    OFFset++;
+                }
+                track = track + OFFset;
+                counter = 0;
+            }
+        }
+
+        for(int i = 0; i < val; i++){
+            freeMem[track] = 1;
+        }
+        for(int i = 0; i < freeMem.size(); i++){
+            cout << freeMem[i] << " ";
+        }
+
+        return ptr;
     }
+        //tracker.size() = val;
+        //startAddress =
+
+//        int* x = new int[5];
+//        void* startAddy = x; //return beg of mem block
+//        void* endAddy = startAddy;
+
+        //offsetSpace->push_back()
+
+
+*/
+
+
 
 
 //        void* startingAddress = aStart;
@@ -49,11 +83,7 @@ public:
 //        cout << "the start address is: " << startingAddress << std::endl;
 
 
-    void firstFit(int blockSize[], int m, int processSize[], int n);
-
-
-};
-
+//initial address of malloc
 
 //    Vehicle<int> vehicle(int,double,string,vehicle_type);
 //

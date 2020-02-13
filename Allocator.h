@@ -5,6 +5,7 @@
 #ifndef INC_20S_3353_PA01_ALLOCATOR_H
 #define INC_20S_3353_PA01_ALLOCATOR_H
 
+#include "myAllocator.h"
 #include <iostream>
 #include <fstream>
 #include <list>
@@ -16,10 +17,10 @@ using std::string;
 using std::cout;
 using std::vector;
 using std::bitset;
+using std::pair;
+using std::list;
 
 class Allocator {
-
-
 
 protected:
 
@@ -28,37 +29,29 @@ protected:
 
     std::string allocatorName;
 
-    bitset<256*1024*1024> memoryBitSetVector;
-
-    vector<int, int>* offsetSpace;
-
-//    struct storedValues{
-//        void* memAddress;
-//        size_t vectorSize;
-//    };
-//
-//    struct freeBlock{
-//        void* startAddress;
-//        size_t size;
-//        freeBlock* next;
-//    };
-//
-//    freeBlock* freeList;
-//    //std::vector <int, Allocator> storedVector;
-//    std::vector<storedValues> storedVector;
-
-
-
 public:
 
-    Allocator() {
+//    struct MemBlock{
+//        void* currStartAddy;
+//        void* nextStartAddy;
+//        void* prevStartAddy;
+//        int blockSize;
+//        bool free;
+//    };
 
-        mem = malloc(256*1024*1024/8);
+    bitset<256*1024*1024> memoryBitSetVector;
+
+    //list<MemBlock, myAllocator<MemBlock>> tracker;
+
+    vector<pair<int,int>, myAllocator<pair<int,int>>> bookKeeper;
+
+    Allocator() {
+        mem = malloc(256*1024*1024);
+       //tracker.blockSize
         cout << "Inside Allocator constructor at address " << mem << std::endl;
     };
 
     virtual ~Allocator() {};
-    //explicit Allocator(const std::string& n);
 
 
     //virtual void* allocate(size_t);
@@ -71,8 +64,6 @@ public:
         cout << "size = " << val << ", address returned is = " << storage << std::endl;
         return storage;
     }
-    //virtual void deallocate(void*) noexcept;
-    //virtual void deallocateArray(void*) noexcept;
 
     virtual void* allocateMemory(size_t val) = 0;
     virtual void deallocate(void* pointer) = 0;
