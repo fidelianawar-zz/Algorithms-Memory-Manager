@@ -16,19 +16,13 @@ FirstFit::FirstFit():Allocator(){
 
 void* FirstFit::allocateMemory(size_t val) {
 
-    //vector<pair<int,size_t>> bookList;
-
-
     int offset;
-
     int numBlocks = val / 8;
-
     bool flag = false;
 
     cout << "inside FirstFit Allocate Memory. val is : " << val << endl;
     cout << "size of freeMem is: " << freeMem.size() << endl;
 
-    //if(freeMem.size() )
     for (int i = 0; i < freeMem.size(); i++) {
         //empty block
         if (freeMem[i] == 0) {
@@ -60,17 +54,31 @@ void* FirstFit::allocateMemory(size_t val) {
 
     bookKeeper.push_back(std::make_pair(offset, numBlocks));
 
-    void* returnAddress = static_cast<char*>(mem) + offset;
+    cout << bookKeeper.size();
+
+    for(int i = 0; i < bookKeeper.size(); i++) {
+        cout << bookKeeper[i].first << " " << bookKeeper[i].second << endl;
+    }
+
+    void* returnAddress = static_cast<char*>(mem) + offset*8;
     return returnAddress;
 
 }
 
 void FirstFit::deallocateMemory(void* pointer){
     cout << "inside FF deallocate";
+    int offsetIndex;
+    int blocks;
 
-    //linear search through vecor to find pointer address and delete
-    if(pointer){
-        pointer = nullptr;
-        free(pointer);
+    for(int i = 0; i < bookKeeper.size(); i++){
+        int tempOffset = 0;
+        tempOffset = bookKeeper[i].first;
+        if(static_cast<char*>(mem) + tempOffset*8 == pointer){
+            offsetIndex = tempOffset;
+            blocks = bookKeeper[i].second;
+        }
+    }
+    for(int i = offsetIndex; i < blocks; i ++){
+        freeMem[i] == 0;
     }
 }

@@ -65,8 +65,18 @@ void* BestFit::allocateMemory(size_t val){
 
 void BestFit::deallocateMemory(void* pointer){
     cout << "inside BF deallocate";
-    if(pointer){
-        pointer = nullptr;
-        free(pointer);
+    int offsetIndex;
+    int blocks;
+
+    for(int i = 0; i < bookKeeper.size(); i++){
+        int tempOffset = 0;
+        tempOffset = bookKeeper[i].first;
+        if(static_cast<char*>(mem) + tempOffset*8 == pointer){
+            offsetIndex = tempOffset;
+            blocks = bookKeeper[i].second;
+        }
+    }
+    for(int i = offsetIndex; i < blocks; i ++){
+        freeMem[i] == 0;
     }
 }
