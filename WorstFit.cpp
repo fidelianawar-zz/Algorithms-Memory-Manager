@@ -62,6 +62,7 @@ void* WorstFit::allocateMemory(size_t val) {
 }
 
 void WorstFit::deallocateMemory(void* pointer){
+    cout << "inside WF deallocate";
     if(pointer){
         pointer = nullptr;
         free(pointer);

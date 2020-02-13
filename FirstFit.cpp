@@ -65,6 +65,8 @@ void* FirstFit::allocateMemory(size_t val) {
 }
 
 void FirstFit::deallocateMemory(void* pointer){
+    cout << "inside FF deallocate";
+
     //linear search through vecor to find pointer address and delete
     if(pointer){
         pointer = nullptr;

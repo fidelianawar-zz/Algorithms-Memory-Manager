@@ -63,6 +63,7 @@ void* BestFit::allocateMemory(size_t val){
 }
 
 void BestFit::deallocateMemory(void* pointer){
+    cout << "inside BF deallocate";
     if(pointer){
         pointer = nullptr;
         free(pointer);

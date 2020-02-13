@@ -53,9 +53,6 @@ void* operator new[](size_t val){
 void operator delete(void* ptr) noexcept {
     SingletonAllocator::getAllocator()->deallocateMemory(ptr);
 }
-void operator delete[](void* ptr) noexcept {
-    SingletonAllocator::getAllocator()->deallocateMemory(ptr);
-}
 
 int main() {
 //    int* ptr01 = new int;
