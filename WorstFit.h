@@ -12,11 +12,9 @@ public:
 
     WorstFit();
 
-    void worstFit(int blockSize[], int m, int processSize[], int n);
-
     void* allocateMemory(size_t val);
 
-    void deallocate(void* pointer);
+    void deallocateMemory(void* pointer);
 
 };
 

@@ -59,9 +59,12 @@ void* FirstFit::allocateMemory(size_t val) {
 
     bookKeeper.push_back(std::make_pair(offset, numBlocks));
 
+    void* returnAddress = static_cast<char*>(mem) + offset;
+    return returnAddress;
+
 }
 
-void FirstFit::deallocate(void* pointer){
+void FirstFit::deallocateMemory(void* pointer){
     //linear search through vecor to find pointer address and delete
     if(pointer){
         pointer = nullptr;

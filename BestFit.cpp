@@ -8,7 +8,8 @@
 using std::cout;
 using std::cin;
 using std::endl;
-using namespace std;
+using std::vector;
+
 
 BestFit::BestFit():Allocator(){
     cout << "inside BestFit constructor";
@@ -18,7 +19,7 @@ void* BestFit::allocateMemory(size_t val){
 
     bitset<256*1024*1024/8> freeMem;
     vector<pair <int, int>, myAllocator<std::pair<int, int>>> babyBook;
-    pair<int,int> bestOffset;
+    pair<int,int> bestSize;
 
     int numBlocks = val/8;
     int offset;
@@ -45,17 +46,23 @@ void* BestFit::allocateMemory(size_t val){
             offset = babyBook[i].first;
         }
         else if(babyBook[i].second > numBlocks){
-            if(babyBook[i].second < bestOffset.second){
-                bestOffset = babyBook[i];
+            if(babyBook[i].second < bestSize.second){
+                bestSize = babyBook[i];
             }
             else{
                 continue;
             }
         }
     }
+
+    offset = bestSize.first;
+    bookKeeper.push_back(std::make_pair(offset,numBlocks));
+
+    void* returnAddress = static_cast<char*>(mem) + offset;
+    return returnAddress;
 }
 
-void BestFit::deallocate(void* pointer){
+void BestFit::deallocateMemory(void* pointer){
     if(pointer){
         pointer = nullptr;
         free(pointer);

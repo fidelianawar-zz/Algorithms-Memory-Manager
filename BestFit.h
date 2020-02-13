@@ -10,7 +10,6 @@
 
 #include <vector>
 
-using std::vector;
 
 class BestFit: public Allocator {
 
@@ -18,7 +17,7 @@ public:
 
     BestFit();
     void* allocateMemory(size_t val);
-    void deallocate(void* pointer);
+    void deallocateMemory(void* pointer);
 };
 
 

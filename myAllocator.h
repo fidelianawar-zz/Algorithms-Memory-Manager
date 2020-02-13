@@ -2,9 +2,7 @@
 #define MEMTEST_VECTEST_H
 #include <iostream>
 #include <new>
-#include <vector>
 
-using std::vector;
 using std::cout;
 using std::endl;
 

@@ -41,8 +41,6 @@ public:
 
     bitset<256*1024*1024> memoryBitSetVector;
 
-    //list<MemBlock, myAllocator<MemBlock>> tracker;
-
     vector<pair<int,int>, myAllocator<pair<int,int>>> bookKeeper;
 
     Allocator() {
@@ -66,7 +64,7 @@ public:
     }
 
     virtual void* allocateMemory(size_t val) = 0;
-    virtual void deallocate(void* pointer) = 0;
+    virtual void deallocateMemory(void* pointer) = 0;
 
 };
 

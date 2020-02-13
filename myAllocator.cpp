@@ -5,7 +5,7 @@
 
 template <class T>
 T* myAllocator<T>::allocate(std::size_t n)  {
-    return static_cast<T*>(std::malloc(n*sizeof(T)));
+    return static_cast<T*>(std::malloc( n*sizeof(T)));
 }
 
 template <class T>

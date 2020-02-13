@@ -15,12 +15,53 @@ WorstFit::WorstFit(){
 }
 
 void* WorstFit::allocateMemory(size_t val) {
-    cout  << std::endl << "INSIDE WORSTFIT.H allocateMemory" << std::endl;
-    void* a;
-    return a;
+
+    bitset<256*1024*1024/8> freeMem;
+    vector<pair <int, int>, myAllocator<std::pair<int, int>>> babyBook;
+    pair<int,int> bestSize;
+
+    int numBlocks = val/8;
+    int offset;
+
+    for(int i = 0; i < freeMem.size(); i++){
+        if(freeMem[i] == 0){
+            offset = i;
+            numBlocks = 1;
+            for(int y = i + 1; y < freeMem.size(); y++){
+                if(freeMem[y] == 0){
+                    numBlocks++;
+                }
+                else{
+                    break;
+                }
+            }
+            babyBook.push_back((std::make_pair(offset, numBlocks)));
+            continue;
+        }
+    }
+
+    for(int i = 0; i < babyBook.size(); i++){
+        if(babyBook[i].second == numBlocks){
+            offset = babyBook[i].first;
+        }
+        else if(babyBook[i].second < numBlocks){
+            if(babyBook[i].second > bestSize.second){
+                bestSize = babyBook[i];
+            }
+            else{
+                continue;
+            }
+        }
+    }
+
+    offset = bestSize.first;
+    bookKeeper.push_back(std::make_pair(offset,numBlocks));
+
+    void* returnAddress = static_cast<char*>(mem) + offset;
+    return returnAddress;
 }
 
-void WorstFit::deallocate(void* pointer){
+void WorstFit::deallocateMemory(void* pointer){
     if(pointer){
         pointer = nullptr;
         free(pointer);
