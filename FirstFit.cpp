@@ -78,5 +78,6 @@ void FirstFit::deallocateMemory(void* pointer){
     for(unsigned int i = offsetIndex; i < blocks; i ++){
         freeMem[i] = 0;
     }
+
     cout << "Finished deallocating " << blocks << " from First Fit." << endl << endl;
 }

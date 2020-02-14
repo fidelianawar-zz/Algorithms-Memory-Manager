@@ -16,6 +16,7 @@ int main() {
 
     //flagAssignment();
     runSmallTest();
+    runMediumTest();
 
     return 0 ;
 }

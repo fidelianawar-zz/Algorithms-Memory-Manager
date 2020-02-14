@@ -66,11 +66,24 @@ void operator delete[](void* ptr) noexcept {
 }
 
 void runSmallTest(){
+    cout << "----------------------------------------------------------------------------------" << endl;
+    cout << "SMOL stress test" << endl;
     int* ptrArray = new int[32];
     delete[] ptrArray;
 
-    char* foo = new char[1000];
-    delete(foo);
+    char* arr = new char[1000];
+    delete[] arr;
+
+    int* large = new int(2305293);
+    delete large;
+    cout << "----------------------------------------------------------------------------------" << endl;
+}
+
+void runMediumTest(){
+//    vector<int>* newVec = new vector<int>{10, 3, 5, 3562, 24590};
+//    delete newVec;
+
+
 }
 
 
