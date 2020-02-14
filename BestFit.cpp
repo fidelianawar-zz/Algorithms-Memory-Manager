@@ -22,14 +22,14 @@ void* BestFit::allocateMemory(size_t val){
     vector<pair <int, int>, myAllocator<std::pair<int, int>>> babyBook;
     pair<int,int> bestSize;
 
-    int numBlocks = val/8;
-    int offset;
+    unsigned int numBlocks = val/8;
+    unsigned int offset;
 
-    for(int i = 0; i < freeMem.size(); i++){
+    for(unsigned int i = 0; i < freeMem.size(); i++){
         if(freeMem[i] == 0){
             offset = i;
             numBlocks = 1;
-            for(int y = i + 1; y < freeMem.size(); y++){
+            for(unsigned int y = i + 1; y < freeMem.size(); y++){
                 if(freeMem[y] == 0){
                     numBlocks++;
                 }
@@ -42,11 +42,11 @@ void* BestFit::allocateMemory(size_t val){
         }
     }
 
-    for(int i = 0; i < babyBook.size(); i++){
-        if(babyBook[i].second == numBlocks){
+    for(unsigned int i = 0; i < babyBook.size(); i++){
+        if((unsigned(babyBook[i].second)) == numBlocks){
             offset = babyBook[i].first;
         }
-        else if(babyBook[i].second > numBlocks){
+        else if(unsigned(babyBook[i].second) > numBlocks){
             if(babyBook[i].second < bestSize.second){
                 bestSize = babyBook[i];
             }
@@ -65,10 +65,10 @@ void* BestFit::allocateMemory(size_t val){
 
 void BestFit::deallocateMemory(void* pointer){
     cout << "inside BF deallocate";
-    int offsetIndex;
-    int blocks;
+    unsigned int offsetIndex;
+    unsigned int blocks;
 
-    for(int i = 0; i < bookKeeper.size(); i++){
+    for(unsigned int i = 0; i < bookKeeper.size(); i++){
         int tempOffset = 0;
         tempOffset = bookKeeper[i].first;
         if(static_cast<char*>(mem) + tempOffset*8 == pointer){
@@ -76,7 +76,7 @@ void BestFit::deallocateMemory(void* pointer){
             blocks = bookKeeper[i].second;
         }
     }
-    for(int i = offsetIndex; i < blocks; i ++){
-        freeMem[i] == 0;
+    for(unsigned int i = offsetIndex; i < blocks; i ++){
+        freeMem[i] = 0;
     }
 }

@@ -22,11 +22,11 @@ void* WorstFit::allocateMemory(size_t val) {
     int numBlocks = val/8;
     int offset;
 
-    for(int i = 0; i < freeMem.size(); i++){
+    for(unsigned int i = 0; i < freeMem.size(); i++){
         if(freeMem[i] == 0){
             offset = i;
             numBlocks = 1;
-            for(int y = i + 1; y < freeMem.size(); y++){
+            for(unsigned int y = i + 1; y < freeMem.size(); y++){
                 if(freeMem[y] == 0){
                     numBlocks++;
                 }
@@ -39,7 +39,7 @@ void* WorstFit::allocateMemory(size_t val) {
         }
     }
 
-    for(int i = 0; i < babyBook.size(); i++){
+    for(unsigned int i = 0; i < babyBook.size(); i++){
         if(babyBook[i].second == numBlocks){
             offset = babyBook[i].first;
         }
@@ -62,10 +62,10 @@ void* WorstFit::allocateMemory(size_t val) {
 
 void WorstFit::deallocateMemory(void* pointer){
     cout << "inside WF deallocate";
-    int offsetIndex;
-    int blocks;
+    unsigned int offsetIndex;
+    unsigned int blocks;
 
-    for(int i = 0; i < bookKeeper.size(); i++){
+    for(unsigned int i = 0; i < bookKeeper.size(); i++){
         int tempOffset = 0;
         tempOffset = bookKeeper[i].first;
         if(static_cast<char*>(mem) + tempOffset*8 == pointer){
@@ -73,8 +73,8 @@ void WorstFit::deallocateMemory(void* pointer){
             blocks = bookKeeper[i].second;
         }
     }
-    for(int i = offsetIndex; i < blocks; i ++){
-        freeMem[i] == 0;
+    for(unsigned int i = offsetIndex; i < blocks; i ++){
+        freeMem[i] = 0;
     }
 
 }

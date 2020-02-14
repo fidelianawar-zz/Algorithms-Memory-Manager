@@ -55,11 +55,6 @@ void operator delete(void* ptr) noexcept {
 }
 
 int main() {
-//    int* ptr01 = new int;
-//    delete ptr01;
-//
-//    cout << endl;
-//
     int* ptrArray = new int[5];
     delete[] ptrArray;
 
@@ -69,16 +64,16 @@ int main() {
 
 
     //create array to store block sizes
-    int block_size[] = {300, 50, 200, 350, 70};
+    //int block_size[] = {300, 50, 200, 350, 70};
 
     //create array to store process sizes
-    int process_size[] = {200, 47, 212, 426, 10};
+    //int process_size[] = {200, 47, 212, 426, 10};
 
     //variable total_blocks that contain total number of blocks
-    int total_blocks = sizeof(block_size) / sizeof(block_size[0]);
+    //int total_blocks = sizeof(block_size) / sizeof(block_size[0]);
 
     //variable total_process that contain total number of blocks
-    int total_process = sizeof(process_size) / sizeof(process_size[0]);
+    //int total_process = sizeof(process_size) / sizeof(process_size[0]);
 
     //calling the function First_fit
     //FirstFit(block_size, total_blocks, process_size, total_process);

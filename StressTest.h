@@ -8,7 +8,7 @@
 
 class StressTest {
     int smallSimpleDataSet(){
-        int numOperations;
+        int numOperations = 0;
 
 
 
