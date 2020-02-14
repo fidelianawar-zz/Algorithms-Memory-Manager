@@ -11,7 +11,7 @@ using std::endl;
 using namespace std;
 
 WorstFit::WorstFit(){
-    cout << std::endl << "INSIDE WORST FIT CONSTRUCTOR" << std::endl;
+    cout << "Creating your WorstFit object!" << endl;
 }
 
 void* WorstFit::allocateMemory(size_t val) {

@@ -11,7 +11,7 @@ using std::endl;
 using namespace std;
 
 FirstFit::FirstFit():Allocator(){
-   cout << "Making First Fit Object" << endl;
+    cout << "Creating your FirstFit object!" << endl;
 }
 
 void* FirstFit::allocateMemory(size_t val) {
@@ -20,8 +20,8 @@ void* FirstFit::allocateMemory(size_t val) {
     unsigned int numBlocks = val / 8;
     bool flag = false;
 
-    cout << "inside FirstFit Allocate Memory. val is : " << val << endl;
-    cout << "size of freeMem is: " << freeMem.size() << endl;
+    cout << "Size of allocation is : " << val << " bytes." << endl;
+    cout << "Size of free memory is: " << freeMem.size() << " words." << endl << endl;
 
     for (unsigned int i = 0; i < freeMem.size(); i++) {
         //empty block
@@ -54,10 +54,8 @@ void* FirstFit::allocateMemory(size_t val) {
 
     bookKeeper.push_back(std::make_pair(offset, numBlocks));
 
-    cout << bookKeeper.size() << endl;
-
     for(unsigned int i = 0; i < bookKeeper.size(); i++) {
-        cout << "bookkeeper offset is: " << bookKeeper[i].first << " bookkeeper numBlocks is: " << bookKeeper[i].second << endl;
+        cout << "The BookKeeper offset is: " << bookKeeper[i].first << " and the BookKeeper number of blocks are: " << bookKeeper[i].second << endl << endl;
     }
 
     void* returnAddress = static_cast<char*>(mem) + offset*8;
@@ -66,7 +64,6 @@ void* FirstFit::allocateMemory(size_t val) {
 }
 
 void FirstFit::deallocateMemory(void* pointer){
-    cout << "inside FF deallocate";
     unsigned int offsetIndex;
     unsigned int blocks;
 
@@ -81,4 +78,5 @@ void FirstFit::deallocateMemory(void* pointer){
     for(unsigned int i = offsetIndex; i < blocks; i ++){
         freeMem[i] = 0;
     }
+    cout << "Finished deallocating " << blocks << " from First Fit." << endl << endl;
 }

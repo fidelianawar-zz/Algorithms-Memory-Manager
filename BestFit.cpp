@@ -12,12 +12,10 @@ using std::vector;
 
 
 BestFit::BestFit():Allocator(){
-    cout << "inside BestFit constructor";
+    cout << "Creating your BestFit object!" << endl;
 }
 
 void* BestFit::allocateMemory(size_t val){
-
-    //bitset<256*1024*1024/8> freeMem;
 
     vector<pair <int, int>, myAllocator<std::pair<int, int>>> babyBook;
     pair<int,int> bestSize;

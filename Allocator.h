@@ -35,13 +35,12 @@ protected:
 public:
     Allocator() {
         mem = malloc(256*1024*1024);
-        cout << "Inside Allocator constructor at address " << mem << std::endl;
+        cout << "Allocating at address: " << mem << std::endl << std::endl;
     };
 
     virtual ~Allocator() {};
 
-
-    //virtual void* allocate(size_t);
+    //if you wanted to allocate directly with object
     virtual void* allocateWithVal(size_t val, int x){
         void *storage = mem;
         cout << "NEW W/ VAL. Allocating " << val << " bytes." << std::endl;
@@ -57,7 +56,5 @@ public:
 
 };
 
-//Allocator::freeBlock* freeList;
-//Allocator::storedValues storedVector;
 
 #endif //INC_20S_3353_PA01_ALLOCATOR_H

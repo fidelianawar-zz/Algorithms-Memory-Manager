@@ -5,6 +5,7 @@
 #include "BestFit.h"
 #include "WorstFit.h"
 #include "GlobalFlag.h"
+#include "GlobalTests.h"
 
 using namespace std;
 extern char flag;
@@ -20,17 +21,14 @@ public:
     static Allocator* getAllocator() {
         if(allocator == nullptr){
             if(flag == 'F'){
-                cout << "inside flag FirstFit" << endl;
                 void* p = malloc(sizeof(FirstFit));
                 allocator = new (p) FirstFit();
             }
             else if(flag == 'B'){
-                cout << "I should not reach here";
                 void* p = malloc(sizeof(BestFit));
                 allocator = new (p) BestFit();
             }
             else if(flag == 'W'){
-                cout << "I should not reach here";
                 void* p = malloc(sizeof(WorstFit));
                 allocator = new (p) WorstFit();
 
