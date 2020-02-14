@@ -3,6 +3,7 @@
 //
 
 #include "GlobalFlag.h"
+
 char flagAssignment(){
     if(flag == 'F'){
         return 'F';

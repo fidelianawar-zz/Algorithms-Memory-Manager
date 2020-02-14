@@ -3,6 +3,7 @@
 #include <iostream>
 #include <new>
 
+//adapted from Dr. Fontenot's memtest example on Github
 template <class T>
 class myAllocator {
 public:

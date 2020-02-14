@@ -13,11 +13,8 @@ using std::bitset;
 char flag = 'F';
 
 int main() {
-
-    //flagAssignment();
     runSmallTest();
     runMediumTest();
-
     return 0 ;
 }
 

@@ -22,4 +22,4 @@ endforeach()
 
 set(CMAKE_CXX_STANDARD 14)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}-Wall -Wextra")
-add_executable(${EXE_NAME} main.cpp Allocator.h BestFit.cpp BestFit.h FirstFit.cpp FirstFit.h main.cpp Point.h SingletonAllocator.h WorstFit.cpp WorstFit.h GlobalFlag.h myAllocator.h StressTest.cpp GlobalTests.h GlobalFlag.cpp)
+add_executable(${EXE_NAME} main.cpp Allocator.h BestFit.cpp BestFit.h FirstFit.cpp FirstFit.h main.cpp SingletonAllocator.h WorstFit.cpp WorstFit.h GlobalFlag.h myAllocator.h GlobalTests.h GlobalFlag.cpp)

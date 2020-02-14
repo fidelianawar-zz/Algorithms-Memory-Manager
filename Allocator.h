@@ -25,12 +25,15 @@ class Allocator {
 protected:
 
     void * mem;
+
+    //size of 256 allocated block of memory
     size_t size = 256 * 1024 * 1024;
 
+    //bitset to keep track of free memory within our large block
     bitset<256*1024*1024/8> freeMem;
-    vector<std::pair<int,int>, myAllocator<pair<int,int>>> bookKeeper;
 
-    std::string allocatorName;
+    //vector pair to keep track of offset and number of block
+    vector<std::pair<int,int>, myAllocator<pair<int,int>>> bookKeeper;
 
 public:
     Allocator() {
@@ -51,6 +54,7 @@ public:
         return storage;
     }
 
+    //virtual void functions that are defined in fit classes
     virtual void* allocateMemory(size_t val) = 0;
     virtual void deallocateMemory(void* pointer) = 0;
 

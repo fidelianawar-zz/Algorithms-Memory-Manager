@@ -14,6 +14,7 @@ WorstFit::WorstFit(){
     cout << "Creating your WorstFit object!" << endl;
 }
 
+//essentially the same algorithm as BestFit but backwards
 void* WorstFit::allocateMemory(size_t val) {
 
     vector<pair <int, int>, myAllocator<std::pair<int, int>>> babyBook;
@@ -43,6 +44,8 @@ void* WorstFit::allocateMemory(size_t val) {
         if(babyBook[i].second == numBlocks){
             offset = babyBook[i].first;
         }
+
+        //tries to find the largest possible block of available memory to alloace to
         else if(babyBook[i].second < numBlocks){
             if(babyBook[i].second > bestSize.second){
                 bestSize = babyBook[i];
@@ -60,6 +63,7 @@ void* WorstFit::allocateMemory(size_t val) {
     return returnAddress;
 }
 
+//all deallocateMemory algs are the same
 void WorstFit::deallocateMemory(void* pointer){
     cout << "inside WF deallocate";
     unsigned int offsetIndex;
@@ -73,6 +77,8 @@ void WorstFit::deallocateMemory(void* pointer){
             blocks = bookKeeper[i].second;
         }
     }
+
+    //change values in free to free
     for(unsigned int i = offsetIndex; i < blocks; i ++){
         freeMem[i] = 0;
     }

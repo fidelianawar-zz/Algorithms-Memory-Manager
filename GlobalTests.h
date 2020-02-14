@@ -6,6 +6,7 @@
 #define INC_20S_3353_PA01_GLOBALTESTS_H
 
 #include <iostream>
+#include <time.h>
 #include "SingletonAllocator.h"
 #include "Allocator.h"
 #include "myAllocator.h"
@@ -20,6 +21,7 @@ using std::bitset;
 
 void* operator new(size_t val) {
 
+    //checking to see if word boundary is matched
     int x = val % 8;
 
     if(x == 0){
@@ -28,6 +30,7 @@ void* operator new(size_t val) {
         return a;
     }
     else{
+        //changing to allocate memory up to the boundary
         val = val - (val%8)+8;
         void* a = SingletonAllocator::getAllocator()->allocateMemory(val);
         cout << "Overloading new at start address: " << a << endl;
@@ -35,6 +38,7 @@ void* operator new(size_t val) {
     }
 }
 
+//overloaded new operator with a value
 void* operator new(size_t val, int x) {
     void* a = SingletonAllocator::getAllocator()->allocateWithVal(val, x);
     cout << a << endl;
@@ -82,6 +86,10 @@ void runSmallTest(){
 void runMediumTest(){
 //    vector<int>* newVec = new vector<int>{10, 3, 5, 3562, 24590};
 //    delete newVec;
+
+    time_t t;
+    time(&t);
+    srand((unsigned int) t);
 
 
 }

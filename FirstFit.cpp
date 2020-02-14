@@ -16,6 +16,7 @@ FirstFit::FirstFit():Allocator(){
 
 void* FirstFit::allocateMemory(size_t val) {
 
+    //offset and numBlocks used to determine where/how much memory to allocate
     unsigned int offset;
     unsigned int numBlocks = val / 8;
     bool flag = false;
@@ -30,11 +31,13 @@ void* FirstFit::allocateMemory(size_t val) {
             if (numBlocks > 1) {
                 //iteratate through numBlocks
                 for (unsigned int j = i; j < numBlocks; j++) {
+                    //keep track of values of 1s
                     if (freeMem[j] == 1) {
                         flag = true;
                         break;
                     }
                 }
+                //need to reset flag
                 if(flag == true){
                     flag = false;
                     continue;
@@ -52,7 +55,9 @@ void* FirstFit::allocateMemory(size_t val) {
         break;
     }
 
+    //store value of offset and value of block
     bookKeeper.push_back(std::make_pair(offset, numBlocks));
+
 
     for(unsigned int i = 0; i < bookKeeper.size(); i++) {
         cout << "The BookKeeper offset is: " << bookKeeper[i].first << " and the BookKeeper number of blocks are: " << bookKeeper[i].second << endl << endl;
@@ -63,10 +68,13 @@ void* FirstFit::allocateMemory(size_t val) {
 
 }
 
+//release memory and change values in bitset to 0
 void FirstFit::deallocateMemory(void* pointer){
+
     unsigned int offsetIndex;
     unsigned int blocks;
 
+    //check to see if pointer address matches an address in the bookKeeper
     for(unsigned int i = 0; i < bookKeeper.size(); i++){
         int tempOffset = 0;
         tempOffset = bookKeeper[i].first;
@@ -75,6 +83,8 @@ void FirstFit::deallocateMemory(void* pointer){
             blocks = bookKeeper[i].second;
         }
     }
+
+    //if the address match, set the space back to 0
     for(unsigned int i = offsetIndex; i < blocks; i ++){
         freeMem[i] = 0;
     }

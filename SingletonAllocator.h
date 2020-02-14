@@ -5,7 +5,6 @@
 #include "BestFit.h"
 #include "WorstFit.h"
 #include "GlobalFlag.h"
-#include "GlobalTests.h"
 
 using namespace std;
 extern char flag;
@@ -13,6 +12,7 @@ extern char flag;
 class SingletonAllocator {
 private:
 
+    //create single instance of allocator
     static Allocator* allocator;
     SingletonAllocator() = default;
 
