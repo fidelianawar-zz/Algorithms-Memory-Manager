@@ -14,6 +14,12 @@
 #include <string>
 #include <bitset>
 
+
+/*
+ * FirstFit involves the partition allocating the first sufficient
+ * free block of space from the top of Main Memory.
+ */
+
 class FirstFit: public Allocator {
 
 public:
