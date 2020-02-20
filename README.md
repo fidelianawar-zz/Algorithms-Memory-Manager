@@ -4,4 +4,4 @@
 
 Project Write Up is --> [here](https://github.com/smu-cs-3353/project_docs/blob/master/proj01.md) <-- 
 
-Memory Manager built using Singleton Design pattern and three design strategy patterns to allocate memory with: BestFit, FirstFit, and WorstFit. Overloaded new/new[] and delete/delete[] operators.
+Memory Managerin C++ that compares the performance/efficiency of three different allocation strategies/algorithms: BestFit, FirstFit, and WorstFit. Implemented using Singleton Design pattern and overloaded new/new[] and delete/delete[] operators.
